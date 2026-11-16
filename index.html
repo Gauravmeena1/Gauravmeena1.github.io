@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaurav Meena</title>
+<meta name="description" content="Gaurav Meena: M.S. student in EECS at NYCU working on dynamic SLAM, 3D scene reconstruction and robot perception.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: sticky identity column on the left, reading column on the right; one column below 820px. */
+:root {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --ink: #18201f;
+  --muted: #5b6764;
+  --line: #dde2df;
+  --accent: #0d6b5c;
+  --accent-soft: #e3f0ec;
+  --object: #c2410c;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111615; --surface: #171d1c; --ink: #e6ecea; --muted: #9aa7a3;
+    --line: #2a3331; --accent: #5cc4ae; --accent-soft: #1b2e2a; --object: #fb8a50;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111615; --surface: #171d1c; --ink: #e6ecea; --muted: #9aa7a3;
+  --line: #2a3331; --accent: #5cc4ae; --accent-soft: #1b2e2a; --object: #fb8a50;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+.wrap {
+  max-width: 1080px; margin: 0 auto; padding: 56px 24px 72px;
+  display: grid; grid-template-columns: 280px 1fr; gap: 64px;
+}
+aside { position: sticky; top: 40px; align-self: start; display: flex; flex-direction: column; gap: 20px; }
+.mono { font-family: var(--font-mono); }
+.name { font-family: var(--font-display); font-weight: 600; font-size: 2.3rem; line-height: 1.1; letter-spacing: -0.01em; }
+.role { color: var(--muted); font-size: 0.95rem; }
+.status {
+  display: inline-flex; align-items: center; gap: 8px; align-self: start;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 0.82rem; font-weight: 500; padding: 5px 10px; border-radius: 999px;
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.93rem; }
+.links span { display: block; color: var(--muted); font-size: 0.75rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+.cv-btn {
+  display: inline-block; align-self: start; padding: 9px 16px; border: 1px solid var(--accent);
+  border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.92rem;
+}
+.cv-btn:hover { background: var(--accent); color: var(--bg); }
+
+main { display: flex; flex-direction: column; gap: 56px; min-width: 0; }
+section { display: flex; flex-direction: column; gap: 18px; }
+h2 {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.55rem;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+p { margin: 0; max-width: 66ch; }
+.lead { font-size: 1.08rem; }
+
+.figure {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 20px 20px 14px; display: flex; flex-direction: column; gap: 10px;
+}
+.figure svg { width: 100%; height: auto; display: block; }
+.figure figcaption { color: var(--muted); font-size: 0.86rem; max-width: 66ch; }
+figure { margin: 0; }
+
+.items { display: flex; flex-direction: column; gap: 22px; }
+.item { display: grid; grid-template-columns: 1fr auto; column-gap: 20px; row-gap: 4px; }
+.item h3 { font-size: 1.02rem; font-weight: 600; }
+.item .when { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.item .where { color: var(--muted); font-size: 0.93rem; grid-column: 1 / -1; }
+.item p { grid-column: 1 / -1; font-size: 0.95rem; }
+.tag {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.05em; padding: 1px 7px; border-radius: 4px; margin-left: 8px; vertical-align: 2px;
+  border: 1px solid var(--line); color: var(--muted);
+}
+.tag.on { border-color: var(--accent); color: var(--accent); }
+
+.skills { display: grid; grid-template-columns: 170px 1fr; gap: 10px 20px; font-size: 0.95rem; }
+.skills dt { color: var(--muted); }
+.skills dd { margin: 0; }
+
+footer { color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--line); padding-top: 18px; }
+
+@media (max-width: 820px) {
+  .wrap { grid-template-columns: 1fr; gap: 40px; padding: 36px 18px 56px; }
+  aside { position: static; }
+  .name { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  .item { grid-template-columns: 1fr; }
+  .item .when { padding-top: 0; }
+  .skills { grid-template-columns: 1fr; gap: 2px; }
+  .skills dd { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <aside>
+    <div>
+      <div class="name">Gaurav Meena</div>
+      <div class="role">M.S. student, Electrical Engineering and Computer Science<br>National Yang Ming Chiao Tung University, Taiwan</div>
+    </div>
+    <div class="status">Seeking PhD positions</div>
+    <ul class="links">
+      <li><span>Email</span><a href="mailto:gauravdhyal@gmail.com">gauravdhyal@gmail.com</a></li>
+      <li><span>GitHub</span><a href="https://github.com/Gauravmeena1">github.com/Gauravmeena1</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/gauravmeena1">linkedin.com/in/gauravmeena1</a></li>
+      <li><span>Based in</span>Hsinchu, Taiwan</li>
+    </ul>
+    <a class="cv-btn" href="cv.pdf">View CV (PDF)</a>
+  </aside>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I work on 3D perception for robots in environments that change: people walk past, objects are moved, and a map built a minute ago is already partly wrong. My goal is scene representations in which every moving object is tracked, reconstructed over time, and recognised when it comes back.</p>
+      <p>I came to computer vision from mathematics, with a B.Sc. from the University of Delhi and an M.Sc. from IIT Madras. I then worked as a research assistant at Academia Sinica on deep learning for 3D microscopy and animal tracking, before starting my M.S. in EECS at NYCU in 2026. I am looking for PhD positions in robot perception, 3D vision and human-robot interaction.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <figure class="figure">
+        <svg viewBox="0 0 640 210" role="img" aria-labelledby="figTitle figDesc">
+          <title id="figTitle">Object persistence in a dynamic map</title>
+          <desc id="figDesc">A static map of grey points. A moving object, shown in orange, is seen at time t0, leaves the camera view at t1, and is re-identified when it returns at t2.</desc>
+          <g fill="var(--muted)" opacity="0.45">
+            <circle cx="40" cy="160" r="2.4"/><circle cx="62" cy="150" r="2.4"/><circle cx="84" cy="164" r="2.4"/><circle cx="106" cy="148" r="2.4"/>
+            <circle cx="128" cy="160" r="2.4"/><circle cx="150" cy="152" r="2.4"/><circle cx="172" cy="166" r="2.4"/><circle cx="194" cy="150" r="2.4"/>
+            <circle cx="216" cy="160" r="2.4"/><circle cx="238" cy="148" r="2.4"/><circle cx="260" cy="162" r="2.4"/><circle cx="282" cy="152" r="2.4"/>
+            <circle cx="304" cy="160" r="2.4"/><circle cx="326" cy="150" r="2.4"/><circle cx="348" cy="164" r="2.4"/><circle cx="370" cy="150" r="2.4"/>
+            <circle cx="392" cy="160" r="2.4"/><circle cx="414" cy="148" r="2.4"/><circle cx="436" cy="162" r="2.4"/><circle cx="458" cy="152" r="2.4"/>
+            <circle cx="480" cy="160" r="2.4"/><circle cx="502" cy="150" r="2.4"/><circle cx="524" cy="164" r="2.4"/><circle cx="546" cy="150" r="2.4"/>
+            <circle cx="568" cy="160" r="2.4"/><circle cx="590" cy="150" r="2.4"/><circle cx="612" cy="162" r="2.4"/>
+            <circle cx="50" cy="40" r="2.4"/><circle cx="50" cy="70" r="2.4"/><circle cx="50" cy="100" r="2.4"/><circle cx="50" cy="128" r="2.4"/>
+            <circle cx="600" cy="40" r="2.4"/><circle cx="600" cy="70" r="2.4"/><circle cx="600" cy="100" r="2.4"/><circle cx="600" cy="128" r="2.4"/>
+          </g>
+          <rect x="250" y="22" width="150" height="118" rx="6" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text x="325" y="16" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">outside camera view</text>
+          <path d="M150 95 C 230 60, 420 60, 500 95" fill="none" stroke="var(--object)" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.7"/>
+          <g fill="var(--object)">
+            <circle cx="140" cy="98" r="5"/><circle cx="153" cy="92" r="5"/><circle cx="148" cy="106" r="5"/><circle cx="161" cy="102" r="5"/>
+          </g>
+          <g fill="none" stroke="var(--object)" stroke-width="1.5" opacity="0.55">
+            <circle cx="317" cy="70" r="5"/><circle cx="330" cy="64" r="5"/><circle cx="325" cy="78" r="5"/><circle cx="338" cy="74" r="5"/>
+          </g>
+          <g fill="var(--object)">
+            <circle cx="497" cy="98" r="5"/><circle cx="510" cy="92" r="5"/><circle cx="505" cy="106" r="5"/><circle cx="518" cy="102" r="5"/>
+          </g>
+          <rect x="484" y="80" width="48" height="40" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="11.5" fill="var(--ink)">
+            <text x="150" y="133" text-anchor="middle">t₀ · object A</text>
+            <text x="327" y="104" text-anchor="middle" fill="var(--muted)">t₁ · remembered</text>
+            <text x="508" y="138" text-anchor="middle" fill="var(--accent)">t₂ · re-identified as A</text>
+          </g>
+          <text x="20" y="196" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">static map</text>
+        </svg>
+        <figcaption>The question behind my research: instead of deleting a moving object from the map, keep it as its own 4D model and recognise it when it returns.</figcaption>
+      </figure>
+
+      <div class="items">
+        <div class="item">
+          <h3>Per-object 4D Gaussian SLAM <span class="tag on">Ongoing</span></h3>
+          <div class="when">2026 – present</div>
+          <div class="where">M.S. research, NYCU</div>
+          <p>Extending Flow4DGS-SLAM so that each moving object is a separate time-varying set of Gaussians with an instance identity from SAM 2, while per-pixel uncertainty decides whether an observation updates the static map or an object.</p>
+        </div>
+        <div class="item">
+          <h3>Dynamic-object removal for live 3D SLAM <span class="tag">Completed</span></h3>
+          <div class="when">2026</div>
+          <div class="where">Lab project, NYCU</div>
+          <p>Contributed to a system that detects and removes moving objects from live 3D SLAM and reconstruction, keeping the static map clean and camera tracking accurate.</p>
+        </div>
+        <div class="item">
+          <h3>Robot navigation</h3>
+          <div class="when">2026 – present</div>
+          <div class="where">Lab robot projects, NYCU</div>
+          <p>Contribute to navigation and path-alignment work in the lab's robot projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="items">
+        <div class="item">
+          <h3>Research Assistant</h3>
+          <div class="when">Jun 2024 – Dec 2025</div>
+          <div class="where">Institute of Cellular and Organismic Biology, Academia Sinica, Taipei</div>
+          <p>Built a deep-learning 3D segmentation tool (U-Net) to measure neurite density in volumetric microscopy, presented as a poster at an EMBO workshop. Set up multi-animal pose tracking of fruit flies with DeepLabCut and SLEAP.</p>
+        </div>
+        <div class="item">
+          <h3>Summer Research Project: derivative-free optimization</h3>
+          <div class="when">May – Jul 2022</div>
+          <div class="where">IIT Madras, with Prof. Neelesh S. Upadhye</div>
+        </div>
+        <div class="item">
+          <h3>Subject Matter Expert in Mathematics (remote)</h3>
+          <div class="when">2022 – 2024</div>
+          <div class="where">Photomath</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected projects</h2>
+      <div class="items">
+        <div class="item">
+          <h3>Structure from motion from scratch</h3>
+          <div class="when">2026</div>
+          <p>Python pipeline: SIFT matching, normalised 8-point algorithm with RANSAC, essential-matrix decomposition with cheirality check, DLT triangulation and textured mesh export. Computer Vision, NYCU (A+).</p>
+        </div>
+        <div class="item">
+          <h3>Where SAM 2 fails</h3>
+          <div class="when">2026</div>
+          <p>Failure analysis of SAM 2 on thin, transparent and small objects, with a prompt-sensitivity study.</p>
+        </div>
+        <div class="item">
+          <h3>Deep reinforcement learning agents</h3>
+          <div class="when">2026</div>
+          <p>DQN and PPO agents with ablation studies. Artificial Intelligence, NYCU.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="items">
+        <div class="item">
+          <h3>M.S., Electrical Engineering and Computer Science</h3>
+          <div class="when">2026 – present</div>
+          <div class="where">National Yang Ming Chiao Tung University, Taiwan · GPA 4.13 / 4.3 · scholarship holder</div>
+        </div>
+        <div class="item">
+          <h3>M.Sc., Mathematics</h3>
+          <div class="when">2021 – 2023</div>
+          <div class="where">Indian Institute of Technology Madras, India</div>
+        </div>
+        <div class="item">
+          <h3>B.Sc. (Hons), Mathematics</h3>
+          <div class="when">2018 – 2021</div>
+          <div class="where">Dyal Singh College, University of Delhi, India</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="presentations">
+      <h2>Presentations</h2>
+      <div class="items">
+        <div class="item">
+          <h3>Poster: automatic glomerular segmentation for neurite density analysis</h3>
+          <div class="when">Mar 2025</div>
+          <div class="where">EMBO Workshop on Neural Development and Neurodegeneration, Academia Sinica</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Programming</dt><dd>Python, PyTorch, TensorFlow/Keras, NumPy, Pandas, OpenCV; CUDA extension builds; Linux and GPU clusters</dd>
+        <dt>Vision and robotics</dt><dd>Gaussian Splatting SLAM, SAM 2, multi-view geometry, U-Net, YOLO, DeepLabCut, SLEAP, Blender</dd>
+        <dt>Mathematics</dt><dd>Estimation and detection theory, optimization, probability and stochastic processes, numerical methods</dd>
+      </dl>
+    </section>
+
+    <section id="leadership">
+      <h2>Leadership</h2>
+      <div class="items">
+        <div class="item">
+          <h3>Vice President, International Student Association</h3>
+          <div class="when">2026 – present</div>
+          <div class="where">NYCU · previously a member of the Event Planning Team</div>
+        </div>
+        <div class="item">
+          <h3>Core Member, M.Sc. Placement Team</h3>
+          <div class="when">2022 – 2023</div>
+          <div class="where">IIT Madras · coordinated 450+ companies and 1,700+ students</div>
+        </div>
+        <div class="item">
+          <h3>Coordinator, Hindi Mantra Mandal</h3>
+          <div class="when">2022 – 2023</div>
+          <div class="where">IIT Madras · organised campus festivals and managed club finances</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>GATE qualified (2024) · IIT-JAM qualified (2021) · Last updated November 2026</footer>
+  </main>
+</div>
+</body>
+</html>
